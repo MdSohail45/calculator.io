@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (btnValue === "=" && input !== "") {
                 // If input has '%', replace with '/100' before evaluating.
                 output = eval(input.replace("%", "/100"));
+                if (output % 1 !== 0) {
+                    output = output.toFixed(2);
+                }
                 outputDisplay.value = output;
             } else if (btnValue === "AC") {
                 input = "";
@@ -24,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // If DEL button is clicked, remove the last character from the input.
                 input = input.toString().slice(0, -1);
             } else {
+                if (btnValue === "." && input.includes(".")) return; // Prevent multiple decimal points
                 // If input is empty and button is specialChars then return
                 if (input === "" && specialChars.includes(btnValue)) return;
                 input += btnValue;
@@ -48,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = e.key;
 
         // Determine if the pressed key is a digit or operator
-        if (!isNaN(parseInt(key)) || specialChars.includes(key)) {
+        if (!isNaN(parseInt(key)) || specialChars.includes(key) || key === ".") {
             calculate(key);
         }
 
