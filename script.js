@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         inputDisplay.focus();
         try {
             if (btnValue === "=" && input !== "") {
-                // If input has '%', replace with '/100' before evaluating.
-                output = eval(input.replace("%", "/100"));
+                output = eval(input);
                 if (output % 1 !== 0) {
                     output = output.toFixed(2);
                 }
