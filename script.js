@@ -23,13 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (btnValue === "DEL") {
                 // If DEL button is clicked, remove the last character from the input.
                 input = input.toString().slice(0, -1);
-                inputDisplay.value = input;
             } else {
                 // If input is empty and button is specialChars then return
                 if (input === "" && specialChars.includes(btnValue)) return;
                 input += btnValue;
-                inputDisplay.value =input;
             }
+            inputDisplay.value = input; // Update input display
         } catch (error) {
             // Handle error cases
             output = "Error";
@@ -61,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle Backspace key
         if (key === "Backspace") {
             calculate("DEL");
+        }
+        if (key === "Escape") {
+            calculate("AC");
         }
     });
 });
