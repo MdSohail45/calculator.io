@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add event listener for keyboard input.
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keyup", (e) => {
         // Get the key code of the pressed key
         const key = e.key;
 
